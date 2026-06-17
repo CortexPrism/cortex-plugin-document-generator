@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-document-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate polished PDFs, Word documents, Markdown reports with templates",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -17,19 +17,41 @@
       "name": "doc_generate",
       "description": "Generate document from markdown content",
       "params": [
-        { "name": "content", "type": "string", "description": "Markdown content", "required": true },
-        { "name": "format", "type": "enum", "description": "Output format", "options": ["pdf", "docx", "md", "html"], "required": true },
+        {
+          "name": "content",
+          "type": "string",
+          "description": "Markdown content",
+          "required": true
+        },
+        {
+          "name": "format",
+          "type": "enum",
+          "description": "Output format",
+          "options": ["pdf", "docx", "md", "html"],
+          "required": true
+        },
         { "name": "title", "type": "string", "description": "Document title", "required": true },
         { "name": "template", "type": "string", "description": "Template name", "required": false },
         { "name": "author", "type": "string", "description": "Document author", "required": false },
-        { "name": "include_toc", "type": "boolean", "description": "Include table of contents", "default": true }
+        {
+          "name": "include_toc",
+          "type": "boolean",
+          "description": "Include table of contents",
+          "default": true
+        }
       ]
     },
     {
       "name": "doc_template_list",
       "description": "List available templates",
       "params": [
-        { "name": "category", "type": "string", "description": "Filter by category", "options": ["report", "proposal", "letter", "meeting_notes", "resume"], "required": false }
+        {
+          "name": "category",
+          "type": "string",
+          "description": "Filter by category",
+          "options": ["report", "proposal", "letter", "meeting_notes", "resume"],
+          "required": false
+        }
       ]
     },
     {
@@ -37,9 +59,24 @@
       "description": "Create custom template",
       "params": [
         { "name": "name", "type": "string", "description": "Template name", "required": true },
-        { "name": "category", "type": "string", "description": "Template category", "required": true },
-        { "name": "header_html", "type": "string", "description": "Custom header HTML", "required": false },
-        { "name": "footer_html", "type": "string", "description": "Custom footer HTML", "required": false },
+        {
+          "name": "category",
+          "type": "string",
+          "description": "Template category",
+          "required": true
+        },
+        {
+          "name": "header_html",
+          "type": "string",
+          "description": "Custom header HTML",
+          "required": false
+        },
+        {
+          "name": "footer_html",
+          "type": "string",
+          "description": "Custom footer HTML",
+          "required": false
+        },
         { "name": "css", "type": "string", "description": "Custom CSS styles", "required": false }
       ]
     },
@@ -47,28 +84,87 @@
       "name": "doc_merge",
       "description": "Merge multiple documents",
       "params": [
-        { "name": "files", "type": "string", "description": "JSON array of file paths", "required": true },
-        { "name": "output_format", "type": "enum", "description": "Output format", "options": ["pdf", "docx"], "required": true },
-        { "name": "output_path", "type": "string", "description": "Output file path", "required": true }
+        {
+          "name": "files",
+          "type": "string",
+          "description": "JSON array of file paths",
+          "required": true
+        },
+        {
+          "name": "output_format",
+          "type": "enum",
+          "description": "Output format",
+          "options": ["pdf", "docx"],
+          "required": true
+        },
+        {
+          "name": "output_path",
+          "type": "string",
+          "description": "Output file path",
+          "required": true
+        }
       ]
     },
     {
       "name": "doc_convert",
       "description": "Convert between document formats",
       "params": [
-        { "name": "input_path", "type": "string", "description": "Input file path", "required": true },
-        { "name": "output_format", "type": "enum", "description": "Output format", "options": ["pdf", "docx", "md", "html", "txt"], "required": true },
-        { "name": "output_path", "type": "string", "description": "Output file path", "required": false }
+        {
+          "name": "input_path",
+          "type": "string",
+          "description": "Input file path",
+          "required": true
+        },
+        {
+          "name": "output_format",
+          "type": "enum",
+          "description": "Output format",
+          "options": ["pdf", "docx", "md", "html", "txt"],
+          "required": true
+        },
+        {
+          "name": "output_path",
+          "type": "string",
+          "description": "Output file path",
+          "required": false
+        }
       ]
     }
   ],
   "ui": {
     "section": "General",
     "fields": [
-      { "key": "defaultFormat", "label": "Default Format", "type": "select", "description": "Default document output format", "default": "pdf", "options": [{ "label": "PDF", "value": "pdf" }, { "label": "DOCX", "value": "docx" }, { "label": "Markdown", "value": "md" }, { "label": "HTML", "value": "html" }] },
-      { "key": "defaultAuthor", "label": "Default Author", "type": "text", "description": "Default document author name" },
-      { "key": "companyName", "label": "Company Name", "type": "text", "description": "Company name for document headers" },
-      { "key": "companyLogo", "label": "Company Logo URL", "type": "text", "description": "URL to company logo image" }
+      {
+        "key": "defaultFormat",
+        "label": "Default Format",
+        "type": "select",
+        "description": "Default document output format",
+        "default": "pdf",
+        "options": [
+          { "label": "PDF", "value": "pdf" },
+          { "label": "DOCX", "value": "docx" },
+          { "label": "Markdown", "value": "md" },
+          { "label": "HTML", "value": "html" }
+        ]
+      },
+      {
+        "key": "defaultAuthor",
+        "label": "Default Author",
+        "type": "text",
+        "description": "Default document author name"
+      },
+      {
+        "key": "companyName",
+        "label": "Company Name",
+        "type": "text",
+        "description": "Company name for document headers"
+      },
+      {
+        "key": "companyLogo",
+        "label": "Company Logo URL",
+        "type": "text",
+        "description": "URL to company logo image"
+      }
     ]
   },
   "dependencies": {},
