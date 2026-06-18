@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-document-generator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generate polished PDFs, Word documents, Markdown reports with templates",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -25,14 +25,34 @@
         },
         {
           "name": "format",
-          "type": "enum",
+          "type": "string",
           "description": "Output format",
-          "options": ["pdf", "docx", "md", "html"],
+          "required": true,
+          "enum": [
+            "pdf",
+            "docx",
+            "md",
+            "html"
+          ]
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Document title",
           "required": true
         },
-        { "name": "title", "type": "string", "description": "Document title", "required": true },
-        { "name": "template", "type": "string", "description": "Template name", "required": false },
-        { "name": "author", "type": "string", "description": "Document author", "required": false },
+        {
+          "name": "template",
+          "type": "string",
+          "description": "Template name",
+          "required": false
+        },
+        {
+          "name": "author",
+          "type": "string",
+          "description": "Document author",
+          "required": false
+        },
         {
           "name": "include_toc",
           "type": "boolean",
@@ -49,8 +69,14 @@
           "name": "category",
           "type": "string",
           "description": "Filter by category",
-          "options": ["report", "proposal", "letter", "meeting_notes", "resume"],
-          "required": false
+          "required": false,
+          "enum": [
+            "report",
+            "proposal",
+            "letter",
+            "meeting_notes",
+            "resume"
+          ]
         }
       ]
     },
@@ -58,7 +84,12 @@
       "name": "doc_template_create",
       "description": "Create custom template",
       "params": [
-        { "name": "name", "type": "string", "description": "Template name", "required": true },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Template name",
+          "required": true
+        },
         {
           "name": "category",
           "type": "string",
@@ -77,7 +108,12 @@
           "description": "Custom footer HTML",
           "required": false
         },
-        { "name": "css", "type": "string", "description": "Custom CSS styles", "required": false }
+        {
+          "name": "css",
+          "type": "string",
+          "description": "Custom CSS styles",
+          "required": false
+        }
       ]
     },
     {
@@ -92,10 +128,13 @@
         },
         {
           "name": "output_format",
-          "type": "enum",
+          "type": "string",
           "description": "Output format",
-          "options": ["pdf", "docx"],
-          "required": true
+          "required": true,
+          "enum": [
+            "pdf",
+            "docx"
+          ]
         },
         {
           "name": "output_path",
@@ -117,10 +156,16 @@
         },
         {
           "name": "output_format",
-          "type": "enum",
+          "type": "string",
           "description": "Output format",
-          "options": ["pdf", "docx", "md", "html", "txt"],
-          "required": true
+          "required": true,
+          "enum": [
+            "pdf",
+            "docx",
+            "md",
+            "html",
+            "txt"
+          ]
         },
         {
           "name": "output_path",
@@ -132,38 +177,54 @@
     }
   ],
   "ui": {
-    "section": "General",
-    "fields": [
+    "settings": [
       {
-        "key": "defaultFormat",
-        "label": "Default Format",
-        "type": "select",
-        "description": "Default document output format",
-        "default": "pdf",
-        "options": [
-          { "label": "PDF", "value": "pdf" },
-          { "label": "DOCX", "value": "docx" },
-          { "label": "Markdown", "value": "md" },
-          { "label": "HTML", "value": "html" }
+        "section": "General",
+        "fields": [
+          {
+            "key": "defaultFormat",
+            "label": "Default Format",
+            "type": "select",
+            "description": "Default document output format",
+            "default": "pdf",
+            "enum": [
+              {
+                "label": "PDF",
+                "value": "pdf"
+              },
+              {
+                "label": "DOCX",
+                "value": "docx"
+              },
+              {
+                "label": "Markdown",
+                "value": "md"
+              },
+              {
+                "label": "HTML",
+                "value": "html"
+              }
+            ]
+          },
+          {
+            "key": "defaultAuthor",
+            "label": "Default Author",
+            "type": "text",
+            "description": "Default document author name"
+          },
+          {
+            "key": "companyName",
+            "label": "Company Name",
+            "type": "text",
+            "description": "Company name for document headers"
+          },
+          {
+            "key": "companyLogo",
+            "label": "Company Logo URL",
+            "type": "text",
+            "description": "URL to company logo image"
+          }
         ]
-      },
-      {
-        "key": "defaultAuthor",
-        "label": "Default Author",
-        "type": "text",
-        "description": "Default document author name"
-      },
-      {
-        "key": "companyName",
-        "label": "Company Name",
-        "type": "text",
-        "description": "Company name for document headers"
-      },
-      {
-        "key": "companyLogo",
-        "label": "Company Logo URL",
-        "type": "text",
-        "description": "URL to company logo image"
       }
     ]
   },
@@ -172,7 +233,10 @@
     "cortex": ">=1.0.0"
   },
   "aiDisclosure": {
-    "tools": ["Claude Code (Anthropic)"],
+    "tools": [
+      "Claude Code (Anthropic)"
+    ],
     "humanReview": true
-  }
+  },
+  "homepage": "https://github.com/CortexPrism/cortex-plugin-document-generator"
 }

@@ -336,6 +336,7 @@ const doc_convert: Tool = {
 };
 
 export async function onLoad(ctx: PluginContext): Promise<void> {
+  ctx.logger.info(`[cortex-plugin-document-generator] Loaded`);
   config = await ctx.config.get();
 }
 
