@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-document-generator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Generate polished PDFs, Word documents, Markdown reports with templates",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -57,7 +57,7 @@
           "name": "include_toc",
           "type": "boolean",
           "description": "Include table of contents",
-          "default": true
+          "defaultValue": true
         }
       ]
     },
@@ -186,8 +186,8 @@
             "label": "Default Format",
             "type": "select",
             "description": "Default document output format",
-            "default": "pdf",
-            "enum": [
+            "defaultValue": "pdf",
+            "options": [
               {
                 "label": "PDF",
                 "value": "pdf"
@@ -230,7 +230,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "cortex": ">=1.0.0"
+    "cortex": ">=0.51.0"
   },
   "aiDisclosure": {
     "tools": [
